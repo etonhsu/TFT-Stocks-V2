@@ -1,10 +1,20 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { StockModule } from './services/stock/stock.module';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'localhost',
+      port: 5432,
+      username: 'your_db_user',
+      password: 'your_password',
+      database: 'tftstocks',
+      autoLoadEntities: true,
+      synchronize: true, // 🚨 disable in prod
+    }),
+    StockModule,
+  ],
 })
 export class AppModule {}
