@@ -1,15 +1,13 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, Index } from 'typeorm';
 
 @Entity('stocks')
 export class StockEntity {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column()
+  @Column({ unique: true })
+  @Index()
   puuid!: string;
-
-  @Column({ name: 'league_id', type: 'uuid' })
-  leagueId!: string;
 
   @Column({ name: 'game_name' })
   gameName!: string;
