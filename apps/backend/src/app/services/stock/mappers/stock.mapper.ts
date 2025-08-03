@@ -4,7 +4,6 @@ import { Stock } from '@tftstocks/shared/types';
 export const mapEntityToStock = (entity: StockEntity): Stock => ({
   id: entity.id,
   puuid: entity.puuid,
-  leagueId: entity.leagueId,
   gameName: entity.gameName,
   tagLine: entity.tagLine,
   delta8h: entity.delta8h,
